@@ -14,6 +14,12 @@ public class DataReader {
         input.close();
     }
 
+    public int getInt(){
+        int number = input.nextInt();
+        input.nextLine();
+        return number;
+    }
+
     public Book readAndCreateBook(){
         System.out.println("Tytuł: ");
         String title = input.nextLine();
