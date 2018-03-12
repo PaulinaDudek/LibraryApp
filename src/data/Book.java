@@ -10,12 +10,12 @@ public class Book {
 
     //CONSTRUCTORS
     public Book (String title, String author, int releaseDate, int pages, String publisher, String isbn){
-        this.title = title;
-        this.author = author;
-        this.releaseDate = releaseDate;
-        this.pages = pages;
-        this.publisher = publisher;
-        this.isbn = isbn;
+        setTitle(title);
+        setAuthor(author);
+        setReleaseDate(releaseDate);
+        setPages(pages);
+        setPublisher(publisher);
+        setIsbn(isbn);
     }
 
     public Book (Book book){
@@ -44,7 +44,12 @@ public class Book {
     }
 
     public void setReleaseDate(int releaseDate) {
-        this.releaseDate = releaseDate;
+        if (releaseDate>0){
+            this.releaseDate = releaseDate;
+        }else {
+            System.out.println("Data nie może być mniejsza od 0.");
+        }
+
     }
 
     public int getPages() {
