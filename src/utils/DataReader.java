@@ -1,6 +1,7 @@
 package utils;//Created by Paulina on 2018-03-12.
 
 import data.Book;
+import data.Magazine;
 
 import java.util.Scanner;
 
@@ -37,6 +38,26 @@ public class DataReader {
         input.nextLine();
 
         return new Book(title,author,releaseDate, pages,publisher,isbn);
+    }
+
+    public Magazine readAndCreateMagazine(){
+        System.out.println("Tytuł: ");
+        String title = input.nextLine();
+        System.out.println("Wydawnictwo: ");
+        String publisher = input.nextLine();
+        System.out.println("Język: ");
+        String language = input.nextLine();
+        System.out.println("Rok wydania: ");
+        int year = input.nextInt();
+        input.nextLine();
+        System.out.println("Miesiąc: ");
+        int month = input.nextInt();
+        input.nextLine();
+        System.out.println("Dzień: ");
+        int day = input.nextInt();
+        input.nextLine();
+
+        return new Magazine(title, publisher, language, year, month, day);
     }
 
 }
