@@ -5,9 +5,10 @@ import data.Library;
 import utils.DataReader;
 
 public class LibraryControll {
-    public final int exit = 0;
-    public final int add_book = 1;
-    public final int print_boooks = 2;
+
+    public static final int EXIT = 0;
+    public static final int ADD_BOOK = 1;
+    public static final int PRINT_BOOKS = 2;
 
     private DataReader dataReader;
 
@@ -21,12 +22,12 @@ public class LibraryControll {
     public void controlLoop(){
         int option;
         printOptions();
-        while ((option=dataReader.getInt())!=exit){
+        while ((option=dataReader.getInt())!=EXIT){
             switch (option){
-                case add_book:
+                case ADD_BOOK:
                     addBook();
                     break;
-                case print_boooks:
+                case PRINT_BOOKS:
                     printBooks();
                     break;
                 default:
