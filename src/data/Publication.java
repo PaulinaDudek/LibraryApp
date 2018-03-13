@@ -41,4 +41,23 @@ public class Publication {
         setPublisher(publisher);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Publication)) return false;
+
+        Publication that = (Publication) o;
+
+        if (getYear() != that.getYear()) return false;
+        if (!getTitle().equals(that.getTitle())) return false;
+        return getPublisher().equals(that.getPublisher());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getYear();
+        result = 31 * result + getTitle().hashCode();
+        result = 31 * result + getPublisher().hashCode();
+        return result;
+    }
 }

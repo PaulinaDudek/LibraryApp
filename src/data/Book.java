@@ -40,9 +40,30 @@ public class Book extends Publication {
         this.setIsbn(isbn);
     }
 
-    public void printInfo() {
+    @Override
+    public String toString() {
         String info = getTitle() + "; " + getAuthor() + "; " + getYear() + "; " + getPages()
                 + "; " + getPublisher() + "; " + getIsbn();
-        System.out.println(info);
+        return info;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (getPages() != book.getPages()) return false;
+        if (getAuthor() != null ? !getAuthor().equals(book.getAuthor()) : book.getAuthor() != null) return false;
+        return getIsbn() != null ? getIsbn().equals(book.getIsbn()) : book.getIsbn() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAuthor() != null ? getAuthor().hashCode() : 0;
+        result = 31 * result + getPages();
+        result = 31 * result + (getIsbn() != null ? getIsbn().hashCode() : 0);
+        return result;
     }
 }
