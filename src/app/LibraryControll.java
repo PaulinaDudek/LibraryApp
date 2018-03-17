@@ -4,6 +4,10 @@ import data.Book;
 import data.Magazine;
 import data.Library;
 import utils.DataReader;
+import utils.LibraryUtils;
+
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 
 public class LibraryControll {
 
@@ -17,26 +21,32 @@ public class LibraryControll {
     }
 
     public void controlLoop() {
-        Option option;
-        printOptions();
-        while ((option = Option.createFromInt(dataReader.getInt())) != Option.EXIT) {
-            switch (option) {
-                case ADD_BOOK:
-                    addBook();
-                    break;
-                case ADD_MAGAZINE:
-                    addMagazine();
-                    break;
-                case PRINT_BOOKS:
-                    printBooks();
-                    break;
-                case PRINT_MAGAZINES:
-                    printMagazines();
-                    break;
-                default:
-                    System.out.println("Nie ma takiej opcji, wprowadź ponownie: ");
+        Option option = null;
+        while (option != Option.EXIT) {
+            try {
+                printOptions();
+                option = Option.createFromInt(dataReader.getInt());
+                switch (option) {
+                    case ADD_BOOK:
+                        addBook();
+                        break;
+                    case ADD_MAGAZINE:
+                        addMagazine();
+                        break;
+                    case PRINT_BOOKS:
+                        printBooks();
+                        break;
+                    case PRINT_MAGAZINES:
+                        printMagazines();
+                        break;
+                    case EXIT:
+                        ;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Wprowadzono niepoprawne dane, publikacji nie dodano");
+            } catch (NumberFormatException | NoSuchElementException e) {
+                System.out.println("Wybrana opcja nie istnieje, wybierz ponownie:");
             }
-            printOptions();
         }
         dataReader.close();
     }
@@ -57,9 +67,9 @@ public class LibraryControll {
         library.addMagazine(magazine);
     }
     private void printBooks(){
-        library.printBooks();
+        LibraryUtils.printBooks(library);
     }
     private void printMagazines(){
-        library.printMagazines();
+        LibraryUtils.printMagazines(library);
     }
 }
