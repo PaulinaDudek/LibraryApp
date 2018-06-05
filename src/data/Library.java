@@ -1,8 +1,5 @@
 package data;
 
-import data.Book;
-import data.Magazine;
-import utils.DataReader;
 
 public class Library {
     public static final int MAX_PUBLICATIONS=2000;
@@ -45,4 +42,13 @@ public class Library {
         publicationsNumber++;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for(int i=0;i<publicationsNumber;i++){
+            builder.append(publications[i]);
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
 }

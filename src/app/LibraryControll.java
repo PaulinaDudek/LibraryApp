@@ -10,7 +10,6 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 public class LibraryControll {
-
     private DataReader dataReader;
 
     private Library library;
